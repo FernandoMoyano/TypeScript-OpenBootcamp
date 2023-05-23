@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "tsnode": "cd src && ts-node index.ts",
-    "start": "nodemon "
+    "start": "nodemon",
+    "transpilation":"tsc"
   },
   "keywords": [
     "typescript",
