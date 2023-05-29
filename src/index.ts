@@ -1,3 +1,5 @@
+import { prototype } from "events";
+
 console.log("Hola Martin");
 
 //esto es uncomentario tanto para js como ts
@@ -71,6 +73,16 @@ let tarea1: Tarea = {
 
 console.log(`tare:${tarea1.nombre}`);
 
+//Asignacion multiple de variables
+
+let miTarea = {
+	nombreTarea: "Mi tarea",
+	estado: Estados.Completado,
+	urgencia: 1,
+};
+
+let { nombreTarea, estado, urgencia } = miTarea;
+
 //TIPOS de typescript
 
 type Producto = {
@@ -126,3 +138,50 @@ switch (tarea1.estado) {
 	default:
 		break;
 }
+
+//Bucles
+
+let listaTareasNuevas: Tarea[] = [
+	{
+		nombre: "Tarea 1",
+		estado: Estados.Completado,
+		urgencia: 2,
+	},
+	{
+		nombre: "Tarea 2",
+		estado: Estados.Pendiente,
+		urgencia: 0,
+	},
+	{
+		nombre: "Tarea 3",
+		estado: Estados.Incompleto,
+		urgencia: 1,
+	},
+];
+
+//FOR CLÁSICO
+for (let index = 0; index < listaTareasNuevas.length; index++) {
+	const tarea = listaTareasNuevas[index];
+	console.log(`${index}-${tarea.nombre}`);
+}
+
+//FOR EACH
+listaTareasNuevas.forEach((tarea: Tarea, index: number) => {
+	console.log(`${index}-${tarea.nombre}`);
+});
+
+//WHILE
+while (tarea1.estado !== Estados.Completado) {
+	tarea1.urgencia++;
+	if (tarea1.urgencia == 5) {
+		tarea1.estado = Estados.Completado;
+	} else {
+		tarea1.urgencia++;
+	}
+}
+
+//DO WHILE(se ejecuta al menos una vez)
+do {
+	tarea1.urgencia++;
+	tarea1.estado = Estados.Pendiente;
+} while (tarea1.estado !== Estados.Completado);
