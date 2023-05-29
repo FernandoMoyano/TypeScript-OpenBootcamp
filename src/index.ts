@@ -251,6 +251,12 @@ function despedidaOpcional(nombre?: string) {
 despedidaOpcional(); //Adios
 despedidaOpcional("Fernando"); //¡Adiós Fernando!
 
+/**
+ * funcion que describe la edad de una persona.
+ * @param nombre nombre de la persona
+ * @param apellidos apellido de la persona
+ * @param edad edad de la persona
+ */
 function variosParams(nombre: string, apellidos?: string, edad: number = 18) {
 	if (apellidos) {
 		console.log(`${nombre} ${apellidos} tiene ${edad} años`);
@@ -274,6 +280,41 @@ function ejemploVariosTipos(a: string | number) {
 	}
 }
 
+ejemploVariosTipos("Hola"); //return text
+ejemploVariosTipos(3); //return number
 
-ejemploVariosTipos("Hola");//return text
-ejemploVariosTipos(3);//return number
+/**
+ * funcion que retorna nombre y apellido de una persona
+ * @param nombre nombre de la persona
+ * @param apellido apellido de la persona
+ * @returns retorna un string
+ */
+function ejemploReturn(nombre: string, apellido: string): string {
+	return `${nombre} ${apellido}`;
+}
+const nombreCompleto = ejemploReturn("Fernando", "San Jose");
+console.log(nombreCompleto);
+
+/**
+ * 
+ * @param nombres es una lista de nombres de string
+ */
+function ejemploMultiParam(...nombres: string[]) {
+	nombres.forEach((nombre) => {
+		console.log(nombre);
+	});
+}
+ejemploMultiParam("Fernando");
+ejemploMultiParam("Fernando", "Martin", "Juan");
+
+const lista=["Alberto", "Sandra"]
+ejemploMultiParam(...lista)
+
+
+function ejemploParamLista(nombres: string[]) {
+	nombres.forEach((nombre) => {
+		console.log(nombre);
+	});
+}
+//paso por referencia
+ejemploParamLista(lista)
