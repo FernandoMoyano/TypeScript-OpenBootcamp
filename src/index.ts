@@ -68,3 +68,61 @@ let tarea1: Tarea = {
 	estado: Estados.Pendiente,
 	urgencia: 10,
 };
+
+console.log(`tare:${tarea1.nombre}`);
+
+//TIPOS de typescript
+
+type Producto = {
+	precio: number;
+	nombre: string;
+	anio: number;
+};
+
+let coche: Producto = {
+	nombre: "Audi",
+	precio: 45000,
+	anio: 2010,
+};
+
+//CONDICIONALES
+//operador Ternario
+console.log(
+	coche.anio < 2010
+		? `Coche:${coche.nombre} es viejo`
+		: `Coche:${coche.nombre} es nuevo`,
+);
+
+//If-else
+
+if (error) {
+	console.log("Hay un error");
+} else {
+	console.log("No hay un error");
+}
+
+//if -else if -else
+
+if (coche.anio < 2010) {
+	console.log(`Coche:${coche.nombre} es viejo`);
+} else if (coche.anio === 2010) {
+	console.log(`Coche:${coche.nombre} es del 2010`);
+} else {
+	`Coche:${coche.nombre}es nuevo`;
+}
+
+//Switch
+
+switch (tarea1.estado) {
+	case Estados.Completado:
+		console.log("La Tarea está completada");
+		break;
+	case Estados.Incompleto:
+		console.log("La Tarea no está completada");
+		break;
+	case Estados.Pendiente:
+		console.log("La Tarea no está pendiente de comprobarse");
+		break;
+	default:
+		break;
+}
