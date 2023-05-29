@@ -1,3 +1,4 @@
+import { log } from "console";
 import { prototype } from "events";
 
 console.log("Hola Martin");
@@ -203,5 +204,76 @@ while (tarea1.estado !== Estados.Completado) {
 //DO WHILE(se ejecuta al menos una vez)
 do {
 	tarea1.urgencia++;
-	tarea1.estado = Estados.Pendiente;
+	tarea1.estado = Estados.Completado;
 } while (tarea1.estado !== Estados.Completado);
+
+//FUNCIONES
+
+/**
+ * Funcion ue muestra un saludo por consola
+ */
+function Saludar() {
+	let nombre = "Fernando";
+	console.log(`¡Hola,${nombre}`);
+}
+//Invocacion de la función
+Saludar();
+
+/**
+ * funcion que muestra por consola el saludo a una persona.
+ * @param nombre Nombre de la persona a saludar
+ */
+function saludarPersona(nombre: string) {
+	console.log(`¡Hola,${nombre}`);
+}
+saludarPersona("Martin");
+
+/**
+ * funcion que muestra por consola el saludo a una persona.
+ * @param nombre Nombre de la persona a saludar, por defecto sera Pepe
+ */
+function despedirPersona(nombre: string = "Pepe") {
+	console.log(`¡Adiós,${nombre}`);
+}
+despedirPersona(); //Adios Pepe
+
+/**
+ * funcion que muestra por consola el saludo a una persona.
+ * @param nombre (opcional) Nombre de la persona a saludar
+ */
+function despedidaOpcional(nombre?: string) {
+	if (nombre) {
+		console.log(`¡Hola,${nombre}`);
+	} else {
+		console.log("Adiós!");
+	}
+}
+despedidaOpcional(); //Adios
+despedidaOpcional("Fernando"); //¡Adiós Fernando!
+
+function variosParams(nombre: string, apellidos?: string, edad: number = 18) {
+	if (apellidos) {
+		console.log(`${nombre} ${apellidos} tiene ${edad} años`);
+	} else {
+		console.log(`${nombre} tiene ${edad} años`);
+	}
+}
+variosParams("Fernando"); //Fernando tiene 18 años.
+variosParams("Fernando", "San Jose"); //Fernando San Jose tiene 18 años.
+variosParams("Fernando", undefined, 30); //Martin tiene 18 años.
+variosParams("Fernando", "San Jose", 30); //Fernando San Jose tiene 18 años.
+
+function ejemploVariosTipos(a: string | number) {
+	if (typeof a === "string") {
+		console.log("A es u string");
+	} else if (typeof a === "number") {
+		console.log("A es un number");
+	} else {
+		console.log("A no es string ni tampoco number");
+		throw Error("A no es un string ni un number");
+	}
+}
+
+
+ejemploVariosTipos("Hola");//return text
+ejemploVariosTipos(3);//return number
