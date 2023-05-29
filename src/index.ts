@@ -83,6 +83,26 @@ let miTarea = {
 
 let { nombreTarea, estado, urgencia } = miTarea;
 
+//FACTOR DE PROPAGACIÓN
+//En listas
+let listaCompraLunes: string[] = ["Leche", "Patatas"];
+let listaCompraMartes: string[] = [...listaCompraLunes, "Pan", "Huevos"];
+let listaCompraMiercoles: boolean[] = [false];
+let listaCompraSemana = [...listaCompraLunes, ...listaCompraMiercoles];
+
+//En objetos
+let estadoApp = {
+	usuario: "admin",
+	session: 3,
+	jwt: "389475829nnbldnfb",
+};
+
+//Cambiar un valor por propagación
+let nuevoEstado = {
+	...estadoApp,
+	sesion: 4,
+};
+
 //TIPOS de typescript
 
 type Producto = {
