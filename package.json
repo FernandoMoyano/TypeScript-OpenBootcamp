@@ -7,8 +7,8 @@
     "tsnode": "cd src && ts-node index.ts",
     "start": "nodemon",
     "transpilation": "tsc",
-    "build:prod":"rimraf ./build && tsc",
-    "start:prod":"npm run build:prod && node build/index.js"
+    "build:prod": "rimraf ./build && tsc",
+    "start:prod": "npm run build:prod && node build/index.js"
   },
   "keywords": [
     "typescript",
@@ -23,5 +23,8 @@
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "cookies-utils": "^1.0.0"
   }
 }

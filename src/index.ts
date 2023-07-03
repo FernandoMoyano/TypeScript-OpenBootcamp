@@ -1,7 +1,12 @@
 import { log } from "console";
 import { prototype } from "events";
 import { resolve } from "path";
-
+import {
+  deleteAllCookies,
+  deleteCookie,
+  getCookieValue,
+  setCookie,
+} from "cookies-utils";
 console.log("Hola Martin");
 
 //esto es uncomentario tanto para js como ts
@@ -119,7 +124,7 @@ let coche: Producto = {
   anio: 2010,
 };
 
-//CONDICIONALES
+//NOTE:CONDICIONALES
 //operador Ternario
 console.log(
   coche.anio < 2010
@@ -161,7 +166,7 @@ switch (tarea1.estado) {
     break;
 }
 
-//Bucles
+//NOTE:Bucles
 
 let listaTareasNuevas: Tarea[] = [
   {
@@ -208,7 +213,7 @@ do {
   tarea1.estado = Estados.Completado;
 } while (tarea1.estado !== Estados.Completado);
 
-//FUNCIONES
+//NOTE:FUNCIONES
 
 /**
  * Funcion ue muestra un saludo por consola
@@ -319,7 +324,7 @@ function ejemploParamLista(nombres: string[]) {
 //paso por referencia
 ejemploParamLista(lista);
 
-//ARROW FUNCTION
+//NOTE:ARROW FUNCTION
 
 type Empleado = {
   nombre: string;
@@ -359,7 +364,7 @@ const cobrarEmpleado = (empleado: Empleado) => {
 };
 obtenerSalario(empleadoFernando, () => "cobrar Matin");
 
-//Async functions
+//NOTE:Async functions
 
 async function ejemploAsync(): Promise<string> {
   await console.log(
@@ -378,7 +383,7 @@ ejemploAsync()
   })
   .finally(() => "Todo ha terminado");
 
-//generators
+//NOTE:Generators
 function* ejemploGenerator() {
   //yield ==> para emitir valores
   let index = 0;
@@ -414,7 +419,38 @@ function* worker(valor: number) {
   yield valor + 3;
 }
 let generatorSaga = watcher(0);
-console.log(generatorSaga.next().value);//0
-console.log(generatorSaga.next().value);
-console.log(generatorSaga.next().value);
+console.log(generatorSaga.next().value); //0 lo ha hecho el watcher
+console.log(generatorSaga.next().value); //1 lo ha hecho el worker
+console.log(generatorSaga.next().value); //2 lo ha hecho el worker
+console.log(generatorSaga.next().value); //3 lo ha hecho el worker
+console.log(generatorSaga.next().value); //4 lo ha hecho el watcher
 
+//sobre carga de funciones
+
+//NOTE:Persistencia de datos
+//1.localStorage ==> Almacena los datos en el navegador(no se eliminan automaticamente)
+//2.SessionStorage ==> Los datos persisten solo en la instancia de navegacion.
+//3.Cookies ==> Tienen una fecha de caducidad y tambien tienen un ambito de URL.
+
+//Cokkies
+
+//more information about the options in documentation
+//https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+const cookieOptions = {
+  name: "usuario", // string,
+  value: "Fernando", // string,
+  maxAge: 10 * 60, // optional number (value in seconds),
+  expires: new Date(2099, 10, 1), // optional Date,
+  path: "/path", // optional string,
+};
+//Establecer una cookie
+setCookie(cookieOptions);
+
+//Obtener una cookie
+let cookieLeida = getCookieValue("usuario");
+
+//Eliminar
+deleteCookie("usuario");
+
+//Eliminar todas las cookies
+deleteAllCookies();
