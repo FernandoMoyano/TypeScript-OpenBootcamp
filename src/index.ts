@@ -7,6 +7,9 @@ import {
   getCookieValue,
   setCookie,
 } from "cookies-utils";
+import { Curso } from "./models/Curso";
+import { Estudiante } from "./models/Estudiante";
+import { LISTA_CURSOS } from "./mock/cursos.mock";
 console.log("Hola Martin");
 
 //esto es uncomentario tanto para js como ts
@@ -486,41 +489,16 @@ delete miTemporizador.terminar;
 
 //NOTE:CLASES
 
-class Curso {
-  nombre: string;
-  horas: number;
-
-  constructor(nombre: string, horas: number) {
-    this.nombre = nombre;
-    this.horas = horas;
-  }
-}
-
-class Estudiante {
-  //propiedads de clase
-  nombre: string;
-  apellidos?: string;
-  cursos: Curso[];
-
-  //constructor;
-  constructor(nombre: string, cursos: Curso[], apellidos?: string) {
-    //inicializamos las propiedades, las propiedades opcionales siempre van al final
-    this.nombre = nombre;
-    //this.apellidos = apellidos ? apellidos : undefined;
-    //Otra opcion de validar
-    if (apellidos) {
-      this.apellidos = apellidos;
-    }
-    this.cursos = cursos;
-  }
-}
-
 //Creamos un curso
-const cursoTs: Curso = new Curso("Typescript", 15);
-const cursoJs: Curso = new Curso("Javascript", 20);
+//const cursoTs: Curso = new Curso("Typescript", 15);
+//const cursoJs: Curso = new Curso("Javascript", 20);
 
-const listaCursos: Curso[] = [];
-listaCursos.push(cursoTs, cursoJs); //lista de cursos
+//const listaCursos: Curso[] = [];
+//listaCursos.push(cursoTs, cursoJs); //lista de cursos
+
+//Usamos mock
+
+const listaCursos: Curso[] = LISTA_CURSOS;
 
 //Creamos un estudiante
 const fernando: Estudiante = new Estudiante(
@@ -537,3 +515,7 @@ fernando.cursos.forEach((curso) => {
 
 const cursoAngular: Curso = new Curso("Angular", 40);
 fernando.cursos.push(cursoAngular); //Añadimos el curso Angular
+
+//saber la instancia de un objeto/varaible
+//-typeof()
+//-instanceof()
