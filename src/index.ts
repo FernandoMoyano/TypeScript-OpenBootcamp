@@ -455,7 +455,7 @@ deleteCookie("usuario");
 //Eliminar todas las cookies
 deleteAllCookies();
 
-//Clase Temporizador
+//NOTE:Clase Temporizador
 
 class Temporizador {
   public terminar?: (tiempo: number) => void;
@@ -483,3 +483,57 @@ setInterval(() => console.log("Tic"), 1000); //Imprimir "tic" cada segundo por c
 
 //Eliminar la ejecucion de la funcion
 delete miTemporizador.terminar;
+
+//NOTE:CLASES
+
+class Curso {
+  nombre: string;
+  horas: number;
+
+  constructor(nombre: string, horas: number) {
+    this.nombre = nombre;
+    this.horas = horas;
+  }
+}
+
+class Estudiante {
+  //propiedads de clase
+  nombre: string;
+  apellidos?: string;
+  cursos: Curso[];
+
+  //constructor;
+  constructor(nombre: string, cursos: Curso[], apellidos?: string) {
+    //inicializamos las propiedades, las propiedades opcionales siempre van al final
+    this.nombre = nombre;
+    //this.apellidos = apellidos ? apellidos : undefined;
+    //Otra opcion de validar
+    if (apellidos) {
+      this.apellidos = apellidos;
+    }
+    this.cursos = cursos;
+  }
+}
+
+//Creamos un curso
+const cursoTs: Curso = new Curso("Typescript", 15);
+const cursoJs: Curso = new Curso("Javascript", 20);
+
+const listaCursos: Curso[] = [];
+listaCursos.push(cursoTs, cursoJs); //lista de cursos
+
+//Creamos un estudiante
+const fernando: Estudiante = new Estudiante(
+  "Fernando",
+  listaCursos,
+  "San Jose"
+);
+
+console.log(`${fernando.nombre} estudia:`);
+//Iteramos por cada uno de los cursos
+fernando.cursos.forEach((curso) => {
+  console.log(`-${curso.nombre} (${curso.horas}horas)`); //Typescript 15 horas
+});
+
+const cursoAngular: Curso = new Curso("Angular", 40);
+fernando.cursos.push(cursoAngular); //Añadimos el curso Angular
