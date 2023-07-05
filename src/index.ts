@@ -454,3 +454,32 @@ deleteCookie("usuario");
 
 //Eliminar todas las cookies
 deleteAllCookies();
+
+//Clase Temporizador
+
+class Temporizador {
+  public terminar?: (tiempo: number) => void;
+  public empezar(): void {
+    setTimeout(() => {
+      //comprobamos que exista la funcion terminar.
+      if (!this.terminar) return;
+      //cuando haya pasado el tiempo se ejecutara la funcion terminar.
+      this.terminar(Date.now());
+    }, 10000);
+  }
+}
+
+const miTemporizador: Temporizador = new Temporizador();
+
+//definir la funcion del callback a ejecutar cuando termine el tiempo
+miTemporizador.terminar = (tiempo: number) => {
+  console.log("Hemos terminado la tarea", tiempo);
+};
+//Lanzamos el temporizador
+miTemporizador.empezar();
+//Se inicia el timeout y cuando termine se ejecuta la funcion terminar()
+
+setInterval(() => console.log("Tic"), 1000); //Imprimir "tic" cada segundo por consola;
+
+//Eliminar la ejecucion de la funcion
+delete miTemporizador.terminar;
