@@ -516,6 +516,10 @@ fernando.cursos.forEach((curso) => {
 const cursoAngular: Curso = new Curso("Angular", 40);
 fernando.cursos.push(cursoAngular); //Añadimos el curso Angular
 
+//conocer las horas Estudiadas de fernando
+fernando.horasEstudiadas; //number
+fernando.ID_Estudiante = "1231244"; //number
+
 //saber la instancia de un objeto/varaible
 //-typeof()
 //-instanceof()

@@ -5,6 +5,7 @@ export class Estudiante {
   nombre: string;
   apellidos?: string;
   cursos: Curso[];
+  private ID: string = "123456";
 
   //constructor;
   constructor(nombre: string, cursos: Curso[], apellidos?: string) {
@@ -19,11 +20,20 @@ export class Estudiante {
   }
 
   //Propiedad horas estudiadas
-  get horasEstudiadas() {
-    let horasDeEstudio = 0;
+  get horasEstudiadas(): number {
+    let horasEstudiadas = 0;
     this.cursos.forEach((curso: Curso) => {
-      horasDeEstudio += curso.horas;
+      horasEstudiadas += curso.horas;
     });
-    return horasDeEstudio;
+    return horasEstudiadas;
+  }
+
+  //podemos acceder a la propiedad ID porque estamos dentro del ambito de clase
+  get ID_Estudiante(): string {
+    return this.ID;
+  }
+  //seteamos el id
+  set ID_Estudiante(id: string) {
+    this.ID = id;
   }
 }
